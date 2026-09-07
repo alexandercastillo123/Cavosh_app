@@ -1,0 +1,295 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ui.Registrar">
+
+    <!-- TODO: Update blank fragment layout -->
+    <TextView
+        android:id="@+id/tvHeader"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/sh_header_police_blue"
+        android:paddingHorizontal="16dp"
+        android:paddingVertical="32dp"
+        android:text="@string/vamos_a_registrarte"
+        android:textColor="@color/flesh"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:elevation="5dp"
+        android:contentDescription="@string/content_description"
+        android:src="@drawable/ic_granos_cafe"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <TextView
+        android:id="@+id/tvIniciarSesion"
+        android:layout_width="172dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="-16dp"
+        android:background="@drawable/sh_btn_light_silver"
+        android:paddingVertical="12dp"
+        android:text="@string/iniciar_sesion"
+        android:textAlignment="center"
+        android:textColor="@color/gunmetal"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@id/tvHeader"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/tvRegistrar"
+        android:layout_width="196dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="32dp"
+        android:layout_marginTop="-16dp"
+        android:background="@drawable/sh_btn_carmine_pink"
+        android:elevation="5dp"
+        android:paddingVertical="12dp"
+        android:text="@string/registrar"
+        android:textAlignment="center"
+        android:textColor="@color/flesh"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@id/tvHeader"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tilNombres"
+        android:layout_width="360dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        app:endIconMode="clear_text"
+        app:hintEnabled="false"
+        app:layout_constraintTop_toBottomOf="@id/tvIniciarSesion"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        >
+
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:background="@drawable/sh_tv_bright_gray"
+            android:paddingHorizontal="16dp"
+            android:inputType="textPersonName"
+            android:hint="@string/nombres"
+            android:maxLength="50"
+            >
+
+        </com.google.android.material.textfield.TextInputEditText>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tilCorreo"
+        android:layout_width="360dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        app:hintEnabled="false"
+        app:endIconMode="clear_text"
+        app:layout_constraintTop_toBottomOf="@id/tilNombres"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        >
+
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:background="@drawable/sh_tv_bright_gray"
+            android:paddingHorizontal="16dp"
+            android:inputType="textEmailAddress"
+            android:hint="@string/correo"
+            android:maxLength="50"
+            >
+
+        </com.google.android.material.textfield.TextInputEditText>
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tilPassword"
+        android:layout_width="360dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        app:hintEnabled="false"
+        app:endIconMode="password_toggle"
+        app:layout_constraintTop_toBottomOf="@id/tilCorreo"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        >
+
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:background="@drawable/sh_tv_bright_gray"
+            android:paddingHorizontal="16dp"
+            android:inputType="textPassword"
+            android:hint="@string/password"
+            android:maxLength="30"
+            >
+
+        </com.google.android.material.textfield.TextInputEditText>
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tilConfirmPassword"
+        android:layout_width="360dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        app:hintEnabled="false"
+        app:endIconMode="password_toggle"
+        app:layout_constraintTop_toBottomOf="@id/tilPassword"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        >
+
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:background="@drawable/sh_tv_bright_gray"
+            android:paddingHorizontal="16dp"
+            android:inputType="textPassword"
+            android:hint="@string/confirmPassword"
+            android:maxLength="30"
+            >
+
+        </com.google.android.material.textfield.TextInputEditText>
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <Button
+        android:id="@+id/btnRegistrarse"
+        android:layout_width="320dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/sh_btn_gunmetal"
+        android:text="@string/registrarse"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@id/tilConfirmPassword"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        />
+
+    <View
+        android:layout_width="96dp"
+        android:layout_height="2dp"
+        android:layout_marginTop="48dp"
+        android:layout_marginStart="32dp"
+        android:background="@color/carmine_pink"
+        app:layout_constraintTop_toBottomOf="@id/btnRegistrarse"
+        app:layout_constraintStart_toStartOf="parent"
+        />
+
+    <TextView
+        android:id="@+id/tvOtroLogueo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="36dp"
+        android:text="@string/otro_login"
+        android:textColor="@color/gunmetal"
+        app:layout_constraintTop_toBottomOf="@id/btnRegistrarse"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        />
+
+    <View
+        android:layout_width="96dp"
+        android:layout_height="2dp"
+        android:layout_marginTop="48dp"
+        android:layout_marginEnd="32dp"
+        android:background="@color/carmine_pink"
+        app:layout_constraintTop_toBottomOf="@id/btnRegistrarse"
+        app:layout_constraintEnd_toEndOf="parent"
+        />
+
+    <ImageView
+        android:id="@+id/ivFacebook"
+        android:layout_width="96dp"
+        android:layout_height="84dp"
+        android:layout_marginTop="96dp"
+        android:layout_marginStart="32dp"
+        android:contentDescription="@string/content_description"
+        android:clickable="true"
+        android:focusable="true"
+        android:background="@drawable/sh_btn_flesh"
+        android:padding="15dp"
+        android:src="@drawable/ic_facebook"
+        app:layout_constraintTop_toBottomOf="@id/btnRegistrarse"
+        app:layout_constraintStart_toStartOf="parent"
+        />
+
+    <ImageView
+        android:id="@+id/ivGoogle"
+        android:layout_width="96dp"
+        android:layout_height="84dp"
+        android:layout_marginTop="96dp"
+        android:contentDescription="@string/content_description"
+        android:clickable="true"
+        android:focusable="true"
+        android:background="@drawable/sh_btn_flesh"
+        android:padding="15dp"
+        android:src="@drawable/ic_google"
+        app:layout_constraintTop_toBottomOf="@id/btnRegistrarse"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        />
+
+    <ImageView
+        android:id="@+id/ivApple"
+        android:layout_width="96dp"
+        android:layout_height="84dp"
+        android:layout_marginTop="96dp"
+        android:layout_marginEnd="32dp"
+        android:contentDescription="@string/content_description"
+        android:clickable="true"
+        android:focusable="true"
+        android:background="@drawable/sh_btn_flesh"
+        android:padding="15dp"
+        android:src="@drawable/ic_apple"
+        app:layout_constraintTop_toBottomOf="@id/btnRegistrarse"
+        app:layout_constraintEnd_toEndOf="parent"
+        />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginBottom="24dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/tienes_una_cuenta"
+            android:textColor="@color/gunmetal" />
+
+        <TextView
+            android:id="@+id/tvRegistrarAhora"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="@string/iniciar_sesion"
+            android:textColor="@color/carmine_pink"
+            android:textStyle="bold"/>
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

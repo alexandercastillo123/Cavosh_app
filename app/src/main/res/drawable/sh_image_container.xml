@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Usaré un color de tu proyecto o similar para el fondo claro de la imagen -->
+    <solid android:color="#EAEFF2" /> <!-- Puedes usar color.bright_gray si lo tienes -->
+    <corners android:radius="16dp" />
+</shape>
