@@ -13,6 +13,11 @@
         <action
             android:id="@+id/action_navigation_splash_to_navigation_login"
             app:destination="@id/navigation_login" />
+        <action
+            android:id="@+id/action_navigation_splash_to_navigation_inicio"
+            app:destination="@id/navigation_inicio"
+            app:popUpTo="@id/navigation_splash"
+            app:popUpToInclusive="true" />
     </fragment>
     <fragment
         android:id="@+id/navigation_login"
@@ -21,7 +26,9 @@
         tools:layout="@layout/fragment_login" >
         <action
             android:id="@+id/action_navigation_login_to_navigation_inicio"
-            app:destination="@id/navigation_inicio" />
+            app:destination="@id/navigation_inicio"
+            app:popUpTo="@id/navigation_login"
+            app:popUpToInclusive="true" />
         <action
             android:id="@+id/action_navigation_login_to_navigation_registrar"
             app:destination="@id/navigation_registrar" />
@@ -31,6 +38,16 @@
         android:name="es.oaemdl.cavoshcafe2026.ui.Registrar"
         android:label="fragment_registrar"
         tools:layout="@layout/fragment_registrar" >
+        <action
+            android:id="@+id/action_navigation_registrar_to_navigation_login"
+            app:destination="@id/navigation_login"
+            app:popUpTo="@id/navigation_registrar"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_navigation_registrar_to_navigation_inicio"
+            app:destination="@id/navigation_inicio"
+            app:popUpTo="@id/navigation_registrar"
+            app:popUpToInclusive="true" />
         <action
             android:id="@+id/action_navigation_registrar_to_navigation_verificar"
             app:destination="@id/navigation_verificar" />
@@ -77,5 +94,21 @@
         android:id="@+id/navigation_perfil"
         android:name="es.oaemdl.cavoshcafe2026.ui.Perfil"
         android:label="fragment_perfil"
-        tools:layout="@layout/fragment_perfil" />
+        tools:layout="@layout/fragment_perfil" >
+        <action
+            android:id="@+id/action_navigation_perfil_to_navigation_login"
+            app:destination="@id/navigation_login"
+            app:popUpTo="@id/navigation_inicio"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_navigation_perfil_to_navigation_mis_pedidos"
+            app:destination="@id/navigation_mis_pedidos" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_mis_pedidos"
+        android:name="es.oaemdl.cavoshcafe2026.ui.MisPedidos"
+        android:label="fragment_mis_pedidos"
+        tools:layout="@layout/fragment_mis_pedidos" />
+
 </navigation>

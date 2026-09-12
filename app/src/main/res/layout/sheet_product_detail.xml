@@ -1,0 +1,287 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/sh_header_police_blue"
+    android:fillViewport="true">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="24dp">
+
+        <!-- Header con botón cerrar y favorito -->
+        <ImageButton
+            android:id="@+id/btnBack"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_margin="16dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="@string/content_description"
+            android:src="@drawable/ic_menu"
+            app:tint="@color/flesh"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/ivDetailFavorito"
+            android:layout_width="44dp"
+            android:layout_height="44dp"
+            android:layout_margin="16dp"
+            android:background="@drawable/sh_notificacion_on"
+            android:padding="10dp"
+            android:src="@drawable/ic_favoritos"
+            app:tint="@color/white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <!-- Imagen del producto y stepper vertical -->
+        <FrameLayout
+            android:id="@+id/flImageHolder"
+            android:layout_width="220dp"
+            android:layout_height="220dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/ivProductDetail"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="fitCenter"
+                android:src="@drawable/ic_img_cafe" />
+        </FrameLayout>
+
+        <!-- Stepper cantidad a la izquierda -->
+        <LinearLayout
+            android:id="@+id/stepperContainer"
+            android:layout_width="40dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:background="@drawable/sh_btn_carmine_pink"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:paddingVertical="4dp"
+            app:layout_constraintBottom_toBottomOf="@id/flImageHolder"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/flImageHolder">
+
+            <TextView
+                android:id="@+id/btnDetailPlus"
+                android:layout_width="match_parent"
+                android:layout_height="36dp"
+                android:gravity="center"
+                android:text="+"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvDetailQuantity"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="1"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/btnDetailMinus"
+                android:layout_width="match_parent"
+                android:layout_height="36dp"
+                android:gravity="center"
+                android:text="-"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <!-- Contenedor blanco con información y opciones -->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardInfo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            app:cardCornerRadius="32dp"
+            app:cardElevation="8dp"
+            app:layout_constraintTop_toBottomOf="@id/flImageHolder">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="24dp">
+
+                <TextView
+                    android:id="@+id/tvDetailTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/gunmetal"
+                    android:textSize="22sp"
+                    android:textStyle="bold"
+                    tools:text="Caramel Macchiato" />
+
+                <TextView
+                    android:id="@+id/tvDetailDescription"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:textColor="#666666"
+                    android:textSize="14sp"
+                    tools:text="Our Caramel Macchiato is the perfect combination of a rich-tasting espresso, creamy milk and the sweet, buttery aroma of caramel." />
+
+                <!-- Selector de Tamaño -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:text="Size"
+                    android:textColor="@color/gunmetal"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:orientation="horizontal">
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnSizeSmall"
+                        android:layout_width="0dp"
+                        android:layout_height="44dp"
+                        android:layout_marginEnd="6dp"
+                        android:layout_weight="1"
+                        android:backgroundTint="@color/carmine_pink"
+                        android:text="Small"
+                        android:textAllCaps="false"
+                        android:textColor="@color/white"
+                        app:cornerRadius="20dp" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnSizeMedium"
+                        android:layout_width="0dp"
+                        android:layout_height="44dp"
+                        android:layout_marginEnd="6dp"
+                        android:layout_weight="1"
+                        android:backgroundTint="@color/bright_gray"
+                        android:text="Medium"
+                        android:textAllCaps="false"
+                        android:textColor="@color/gunmetal"
+                        app:cornerRadius="20dp" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnSizeLarge"
+                        android:layout_width="0dp"
+                        android:layout_height="44dp"
+                        android:layout_weight="1"
+                        android:backgroundTint="@color/bright_gray"
+                        android:text="Large"
+                        android:textAllCaps="false"
+                        android:textColor="@color/gunmetal"
+                        app:cornerRadius="20dp" />
+                </LinearLayout>
+
+                <!-- Personalizaciones: Leche -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:text="Milk Choice"
+                    android:textColor="@color/gunmetal"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
+
+                <RadioGroup
+                    android:id="@+id/rgMilk"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp">
+
+                    <RadioButton
+                        android:id="@+id/rbMilkFullFat"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:checked="true"
+                        android:text="Full-fat milk" />
+
+                    <RadioButton
+                        android:id="@+id/rbMilkOat"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Oat milk (+ $0.70)" />
+
+                    <RadioButton
+                        android:id="@+id/rbMilkAlmond"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Almond milk (+ $0.70)" />
+                </RadioGroup>
+
+                <!-- Opciones crema batida y cafeína -->
+                <CheckBox
+                    android:id="@+id/cbWhippedCream"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="With whipped cream (+ $0.50)" />
+
+                <CheckBox
+                    android:id="@+id/cbNoCaffeine"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Without caffeine" />
+
+                <!-- Barra inferior: Total y Agregar al Carrito -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="24dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Total price"
+                            android:textColor="#888888"
+                            android:textSize="13sp" />
+
+                        <TextView
+                            android:id="@+id/tvDetailTotalPrice"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/gunmetal"
+                            android:textSize="22sp"
+                            android:textStyle="bold"
+                            tools:text="$4.70" />
+                    </LinearLayout>
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnAddToCart"
+                        android:layout_width="match_parent"
+                        android:layout_height="54dp"
+                        android:layout_marginStart="24dp"
+                        android:backgroundTint="@color/gunmetal"
+                        android:text="Add to cart"
+                        android:textAllCaps="false"
+                        android:textColor="@color/white"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        app:cornerRadius="24dp" />
+                </LinearLayout>
+
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.core.widget.NestedScrollView>

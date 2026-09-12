@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/cardSucursal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="16dp"
+    android:layout_marginVertical="6dp"
+    app:cardCornerRadius="16dp"
+    app:cardElevation="2dp"
+    app:cardBackgroundColor="@color/white">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="12dp">
+
+        <ImageView
+            android:id="@+id/ivLogoCafe"
+            android:layout_width="52dp"
+            android:layout_height="52dp"
+            android:background="@drawable/sh_header_police_blue"
+            android:padding="10dp"
+            android:src="@drawable/ic_logo"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tvNombreCafe"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_marginEnd="8dp"
+            android:textColor="@color/gunmetal"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toStartOf="@id/rbSelected"
+            app:layout_constraintStart_toEndOf="@id/ivLogoCafe"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Cavosh Cafe" />
+
+        <TextView
+            android:id="@+id/tvDireccion"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="2dp"
+            android:layout_marginEnd="8dp"
+            android:textColor="#666666"
+            android:textSize="13sp"
+            app:layout_constraintEnd_toStartOf="@id/rbSelected"
+            app:layout_constraintStart_toEndOf="@id/ivLogoCafe"
+            app:layout_constraintTop_toBottomOf="@id/tvNombreCafe"
+            tools:text="Legnicka 5, Wroclaw" />
+
+        <TextView
+            android:id="@+id/tvHorario"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="2dp"
+            android:layout_marginEnd="8dp"
+            android:textColor="#888888"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toStartOf="@id/rbSelected"
+            app:layout_constraintStart_toEndOf="@id/ivLogoCafe"
+            app:layout_constraintTop_toBottomOf="@id/tvDireccion"
+            tools:text="Open: 8:00 AM - 22:00 PM" />
+
+        <RadioButton
+            android:id="@+id/rbSelected"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:buttonTint="@color/carmine_pink"
+            android:clickable="false"
+            android:focusable="false"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>
