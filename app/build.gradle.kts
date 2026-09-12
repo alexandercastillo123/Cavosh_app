@@ -45,6 +45,7 @@ dependencies {
     implementation(libs.navigation.fragment)
     implementation(libs.navigation.ui)
     implementation(libs.picasso)
+    implementation(libs.volley)
 
     implementation(libs.retrofit)
     implementation(libs.retrofit.gson)
