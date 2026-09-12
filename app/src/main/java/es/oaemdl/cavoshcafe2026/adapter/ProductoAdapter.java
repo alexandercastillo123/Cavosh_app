@@ -35,9 +35,20 @@ public class ProductoAdapter extends RecyclerView.Adapter<ProductoAdapter.ViewHo
 
     @Override
     public void onBindViewHolder(@NonNull ProductoAdapter.ViewHolder holder, int position) {
-        Producto producto;
+        Producto producto = productos.get( position );
+        holder.tvProducto.setText( String.format( "%s\n%s", producto.getDetalle(), producto.getDescripcion() ) );
+        holder.tvPrecio.setText( new DecimalFormat( "###.##").format( producto.getPrecio() ) );
 
+        Picasso.get()
+                .load("URL...." + producto.getId() + ".jpg" )
+                .fit().centerCrop()
+                .placeholder(R.drawable.ic_imagen)
+                .error( R.drawable.ic_imagen )
+                .into( holder.ivProducto );
 
+        holder.itemView.setOnClickListener(v -> {
+
+        } );
     }
 
     @Override
