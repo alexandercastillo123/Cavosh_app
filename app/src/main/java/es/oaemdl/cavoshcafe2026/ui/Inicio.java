@@ -8,8 +8,8 @@ import android.widget.SearchView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
+
+import es.oaemdl.cavoshcafe2026.controller.ProductoController;
 import es.oaemdl.cavoshcafe2026.data.api.ApiClient;
 import es.oaemdl.cavoshcafe2026.data.model.ApiResponse;
 import es.oaemdl.cavoshcafe2026.data.model.Producto;
@@ -26,6 +26,7 @@ public class Inicio extends Fragment {
     private SessionManager session;
     private ProductoAdapter nuevosAdapter;
     private ProductoAdapter frecuentesAdapter;
+    private final ProductoController controller = new ProductoController();
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -38,11 +39,9 @@ public class Inicio extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         session = new SessionManager(requireContext());
 
-        // Configuración de encabezado
         binding.tvUsuario.setText("Good morning, " + session.getUserName());
         binding.tvCafe.setText(session.getSelectedCafeName() + " " + session.getSelectedCafeAddress());
 
-        // Selector de sede
         binding.tvCambiarSede.setOnClickListener(v -> {
             ChooseCafeBottomSheet sheet = new ChooseCafeBottomSheet();
             sheet.setOnCafeSavedListener(cafe -> {
@@ -51,7 +50,6 @@ public class Inicio extends Fragment {
             sheet.show(getChildFragmentManager(), "choose_cafe");
         });
 
-        // Configuración de Adapters
         nuevosAdapter = new ProductoAdapter(ProductoAdapter.TYPE_VERTICAL);
         nuevosAdapter.setOnProductClickListener(this::abrirDetalleProducto);
         nuevosAdapter.setOnProductAddListener(this::abrirDetalleProducto);
@@ -62,7 +60,6 @@ public class Inicio extends Fragment {
         frecuentesAdapter.setOnProductAddListener(this::abrirDetalleProducto);
         binding.rvOrdenados.setAdapter(frecuentesAdapter);
 
-        // Búsqueda
         binding.svBuscar.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
@@ -83,28 +80,27 @@ public class Inicio extends Fragment {
     }
 
     private void cargarProductos() {
-        ApiClient.getService().listarNuevos().enqueue(new Callback<ApiResponse<List<Producto>>>() {
+        controller.obtenerNuevos(requireContext(), new ProductoController.ProductosCallback() {
             @Override
-            public void onResponse(@NonNull Call<ApiResponse<List<Producto>>> call, @NonNull Response<ApiResponse<List<Producto>>> response) {
-                if (isAdded() && response.isSuccessful() && response.body() != null) {
-                    nuevosAdapter.submitList(response.body().getData());
-                }
+            public void onProductos(List<Producto> productos) {
+                if (isAdded()) nuevosAdapter.submitList(productos);
             }
-            @Override public void onFailure(@NonNull Call<ApiResponse<List<Producto>>> call, @NonNull Throwable t) {}
+            @Override
+            public void onError(String mensaje) { /* silencioso, el usuario no ve error */ }
         });
 
-        ApiClient.getService().listarFrecuentes().enqueue(new Callback<ApiResponse<List<Producto>>>() {
+        controller.obtenerFrecuentes(requireContext(), new ProductoController.ProductosCallback() {
             @Override
-            public void onResponse(@NonNull Call<ApiResponse<List<Producto>>> call, @NonNull Response<ApiResponse<List<Producto>>> response) {
-                if (isAdded() && response.isSuccessful() && response.body() != null) {
-                    frecuentesAdapter.submitList(response.body().getData());
-                }
+            public void onProductos(List<Producto> productos) {
+                if (isAdded()) frecuentesAdapter.submitList(productos);
             }
-            @Override public void onFailure(@NonNull Call<ApiResponse<List<Producto>>> call, @NonNull Throwable t) {}
+            @Override
+            public void onError(String mensaje) { }
         });
     }
 
     private void buscarProductos(String q) {
+        // Búsqueda siempre va directo a la API (no se cachea)
         ApiClient.getService().buscarProductos(q).enqueue(new Callback<ApiResponse<List<Producto>>>() {
             @Override
             public void onResponse(@NonNull Call<ApiResponse<List<Producto>>> call, @NonNull Response<ApiResponse<List<Producto>>> response) {

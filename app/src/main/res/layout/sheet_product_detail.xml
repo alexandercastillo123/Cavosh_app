@@ -4,118 +4,148 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@drawable/sh_header_police_blue"
+    android:background="@android:color/transparent"
     android:fillViewport="true">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingBottom="24dp">
+        android:background="#F7F9FA">
 
-        <!-- Header con botón cerrar y favorito -->
-        <ImageButton
-            android:id="@+id/btnBack"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:layout_margin="16dp"
-            android:background="?attr/selectableItemBackgroundBorderless"
-            android:contentDescription="@string/content_description"
-            android:src="@drawable/ic_menu"
-            app:tint="@color/flesh"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <ImageView
-            android:id="@+id/ivDetailFavorito"
-            android:layout_width="44dp"
-            android:layout_height="44dp"
-            android:layout_margin="16dp"
-            android:background="@drawable/sh_notificacion_on"
-            android:padding="10dp"
-            android:src="@drawable/ic_favoritos"
-            app:tint="@color/white"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <!-- Imagen del producto y stepper vertical -->
-        <FrameLayout
-            android:id="@+id/flImageHolder"
-            android:layout_width="220dp"
-            android:layout_height="220dp"
-            android:layout_marginTop="8dp"
+        <!-- Header azul curvado con siluetas de granos de café -->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/headerContainer"
+            android:layout_width="match_parent"
+            android:layout_height="260dp"
+            android:background="@drawable/sh_header_curved_blue"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
+            <!-- Marca de agua granos de café -->
+            <ImageView
+                android:layout_width="220dp"
+                android:layout_height="220dp"
+                android:layout_marginEnd="-40dp"
+                android:layout_marginTop="-20dp"
+                android:alpha="0.18"
+                android:scaleType="fitCenter"
+                android:src="@drawable/ic_granos_cafe"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <!-- Botón atrás (<) -->
+            <ImageButton
+                android:id="@+id/btnBack"
+                android:layout_width="44dp"
+                android:layout_height="44dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:contentDescription="@string/content_description"
+                android:padding="8dp"
+                android:src="@drawable/ic_arrow_back"
+                app:tint="@color/white"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <!-- Botón Favorito circular naranja -->
+            <ImageButton
+                android:id="@+id/ivDetailFavorito"
+                android:layout_width="44dp"
+                android:layout_height="44dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/sh_btn_favorito_circle"
+                android:contentDescription="@string/content_description"
+                android:padding="10dp"
+                android:src="@drawable/ic_favoritos"
+                app:tint="@color/white"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <!-- Imagen del Café centrada -->
             <ImageView
                 android:id="@+id/ivProductDetail"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_width="190dp"
+                android:layout_height="210dp"
+                android:layout_marginTop="32dp"
                 android:scaleType="fitCenter"
-                android:src="@drawable/ic_img_cafe" />
-        </FrameLayout>
+                android:src="@drawable/ic_img_cafe"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-        <!-- Stepper cantidad a la izquierda -->
-        <LinearLayout
-            android:id="@+id/stepperContainer"
-            android:layout_width="40dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="24dp"
-            android:background="@drawable/sh_btn_carmine_pink"
-            android:gravity="center"
-            android:orientation="vertical"
-            android:paddingVertical="4dp"
-            app:layout_constraintBottom_toBottomOf="@id/flImageHolder"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@id/flImageHolder">
-
-            <TextView
-                android:id="@+id/btnDetailPlus"
-                android:layout_width="match_parent"
-                android:layout_height="36dp"
-                android:gravity="center"
-                android:text="+"
-                android:textColor="@color/white"
-                android:textSize="20sp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/tvDetailQuantity"
-                android:layout_width="match_parent"
+            <!-- Stepper vertical de cantidad (+ 1 -) naranja flotante a la izquierda -->
+            <LinearLayout
+                android:id="@+id/stepperContainer"
+                android:layout_width="38dp"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:background="@drawable/sh_btn_carmine_pink"
                 android:gravity="center"
-                android:text="1"
-                android:textColor="@color/white"
-                android:textSize="16sp"
-                android:textStyle="bold" />
+                android:orientation="vertical"
+                android:paddingVertical="4dp"
+                app:layout_constraintBottom_toBottomOf="@id/ivProductDetail"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/ivProductDetail">
 
-            <TextView
-                android:id="@+id/btnDetailMinus"
-                android:layout_width="match_parent"
-                android:layout_height="36dp"
-                android:gravity="center"
-                android:text="-"
-                android:textColor="@color/white"
-                android:textSize="20sp"
-                android:textStyle="bold" />
-        </LinearLayout>
+                <TextView
+                    android:id="@+id/btnDetailPlus"
+                    android:layout_width="match_parent"
+                    android:layout_height="32dp"
+                    android:gravity="center"
+                    android:text="+"
+                    android:textColor="@color/white"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
 
-        <!-- Contenedor blanco con información y opciones -->
+                <TextView
+                    android:id="@+id/tvDetailQuantity"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="1"
+                    android:textColor="@color/white"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/btnDetailMinus"
+                    android:layout_width="match_parent"
+                    android:layout_height="32dp"
+                    android:gravity="center"
+                    android:text="-"
+                    android:textColor="@color/white"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <!-- Contenedor blanco con la información del café en ESPAÑOL -->
         <androidx.cardview.widget.CardView
             android:id="@+id/cardInfo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="-24dp"
+            app:cardBackgroundColor="@color/white"
             app:cardCornerRadius="32dp"
-            app:cardElevation="8dp"
-            app:layout_constraintTop_toBottomOf="@id/flImageHolder">
+            app:cardElevation="6dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/headerContainer">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:padding="24dp">
+                android:paddingHorizontal="24dp"
+                android:paddingTop="24dp"
+                android:paddingBottom="20dp">
 
+                <!-- Título del Café -->
                 <TextView
                     android:id="@+id/tvDetailTitle"
                     android:layout_width="wrap_content"
@@ -125,25 +155,44 @@
                     android:textStyle="bold"
                     tools:text="Caramel Macchiato" />
 
+                <!-- Descripción del Café -->
                 <TextView
                     android:id="@+id/tvDetailDescription"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
-                    android:textColor="#666666"
-                    android:textSize="14sp"
-                    tools:text="Our Caramel Macchiato is the perfect combination of a rich-tasting espresso, creamy milk and the sweet, buttery aroma of caramel." />
+                    android:lineSpacingExtra="3dp"
+                    android:textColor="#6E7985"
+                    android:textSize="13sp"
+                    tools:text="Nuestro Caramel Macchiato es la combinación perfecta de rico café espresso, leche cremosa y el dulce y suave aroma del caramelo." />
 
-                <!-- Selector de Tamaño -->
-                <TextView
-                    android:layout_width="wrap_content"
+                <!-- Selector de Tamaño: Título "Tamaño" y "250ml" a la derecha -->
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
-                    android:text="Size"
-                    android:textColor="@color/gunmetal"
-                    android:textSize="16sp"
-                    android:textStyle="bold" />
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
 
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Tamaño"
+                        android:textColor="@color/gunmetal"
+                        android:textSize="15sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tvDetailVolume"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="250ml"
+                        android:textColor="#888888"
+                        android:textSize="13sp" />
+                </LinearLayout>
+
+                <!-- Botones de Tamaño: Pequeño, Mediano, Grande -->
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -154,89 +203,204 @@
                         android:id="@+id/btnSizeSmall"
                         android:layout_width="0dp"
                         android:layout_height="44dp"
-                        android:layout_marginEnd="6dp"
+                        android:layout_marginEnd="8dp"
                         android:layout_weight="1"
                         android:backgroundTint="@color/carmine_pink"
-                        android:text="Small"
+                        android:text="Pequeño"
                         android:textAllCaps="false"
                         android:textColor="@color/white"
-                        app:cornerRadius="20dp" />
+                        android:textSize="13sp"
+                        app:cornerRadius="22dp"
+                        app:elevation="0dp" />
 
                     <com.google.android.material.button.MaterialButton
                         android:id="@+id/btnSizeMedium"
                         android:layout_width="0dp"
                         android:layout_height="44dp"
-                        android:layout_marginEnd="6dp"
+                        android:layout_marginEnd="8dp"
                         android:layout_weight="1"
-                        android:backgroundTint="@color/bright_gray"
-                        android:text="Medium"
+                        android:backgroundTint="#F0F2F5"
+                        android:text="Mediano"
                         android:textAllCaps="false"
                         android:textColor="@color/gunmetal"
-                        app:cornerRadius="20dp" />
+                        android:textSize="13sp"
+                        app:cornerRadius="22dp"
+                        app:elevation="0dp" />
 
                     <com.google.android.material.button.MaterialButton
                         android:id="@+id/btnSizeLarge"
                         android:layout_width="0dp"
                         android:layout_height="44dp"
                         android:layout_weight="1"
-                        android:backgroundTint="@color/bright_gray"
-                        android:text="Large"
+                        android:backgroundTint="#F0F2F5"
+                        android:text="Grande"
                         android:textAllCaps="false"
                         android:textColor="@color/gunmetal"
-                        app:cornerRadius="20dp" />
+                        android:textSize="13sp"
+                        app:cornerRadius="22dp"
+                        app:elevation="0dp" />
                 </LinearLayout>
 
-                <!-- Personalizaciones: Leche -->
+                <!-- Sección: Personaliza tu café -->
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
-                    android:text="Milk Choice"
+                    android:text="Personaliza tu café"
                     android:textColor="@color/gunmetal"
                     android:textSize="15sp"
                     android:textStyle="bold" />
 
-                <RadioGroup
-                    android:id="@+id/rgMilk"
+                <!-- 4 items horizontales: Leche, Crema, Cafeína, Cambiar -->
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="4dp">
+                    android:layout_marginTop="10dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
 
-                    <RadioButton
-                        android:id="@+id/rbMilkFullFat"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:checked="true"
-                        android:text="Full-fat milk" />
+                    <!-- Item 1: Leche -->
+                    <LinearLayout
+                        android:id="@+id/chipMilk"
+                        android:layout_width="0dp"
+                        android:layout_height="80dp"
+                        android:layout_marginEnd="6dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/sh_custom_chip_bg"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:padding="6dp">
 
-                    <RadioButton
-                        android:id="@+id/rbMilkOat"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Oat milk (+ $0.70)" />
+                        <ImageView
+                            android:layout_width="22dp"
+                            android:layout_height="22dp"
+                            android:src="@drawable/ic_milk" />
 
-                    <RadioButton
-                        android:id="@+id/rbMilkAlmond"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Almond milk (+ $0.70)" />
-                </RadioGroup>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="3dp"
+                            android:text="Leche"
+                            android:textColor="#E65738"
+                            android:textSize="11sp" />
 
-                <!-- Opciones crema batida y cafeína -->
-                <CheckBox
-                    android:id="@+id/cbWhippedCream"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:text="With whipped cream (+ $0.50)" />
+                        <TextView
+                            android:id="@+id/tvCustomMilkValue"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Avena"
+                            android:textColor="#E65738"
+                            android:textSize="12sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
 
-                <CheckBox
-                    android:id="@+id/cbNoCaffeine"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Without caffeine" />
+                    <!-- Item 2: Crema -->
+                    <LinearLayout
+                        android:id="@+id/chipCream"
+                        android:layout_width="0dp"
+                        android:layout_height="80dp"
+                        android:layout_marginEnd="6dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/sh_custom_chip_bg"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:padding="6dp">
 
-                <!-- Barra inferior: Total y Agregar al Carrito -->
+                        <ImageView
+                            android:layout_width="22dp"
+                            android:layout_height="22dp"
+                            android:src="@drawable/ic_cream" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="3dp"
+                            android:text="Crema"
+                            android:textColor="#E65738"
+                            android:textSize="11sp" />
+
+                        <TextView
+                            android:id="@+id/tvCustomCreamValue"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="No"
+                            android:textColor="#E65738"
+                            android:textSize="12sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+                    <!-- Item 3: Cafeína -->
+                    <LinearLayout
+                        android:id="@+id/chipCaffeine"
+                        android:layout_width="0dp"
+                        android:layout_height="80dp"
+                        android:layout_marginEnd="6dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/sh_custom_chip_bg"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:padding="6dp">
+
+                        <ImageView
+                            android:layout_width="22dp"
+                            android:layout_height="22dp"
+                            android:src="@drawable/ic_caffeine" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="3dp"
+                            android:text="Cafeína"
+                            android:textColor="#E65738"
+                            android:textSize="11sp" />
+
+                        <TextView
+                            android:id="@+id/tvCustomCaffeineValue"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Sí"
+                            android:textColor="#E65738"
+                            android:textSize="12sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+                    <!-- Item 4: Botón Cambiar (círculo naranja con lápiz) -->
+                    <LinearLayout
+                        android:id="@+id/btnChangeCustomize"
+                        android:layout_width="0dp"
+                        android:layout_height="80dp"
+                        android:layout_weight="1"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:layout_width="38dp"
+                            android:layout_height="38dp"
+                            android:background="@drawable/sh_btn_carmine_pink"
+                            android:padding="10dp"
+                            android:src="@drawable/ic_edit_pencil"
+                            app:tint="@color/white" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:text="Cambiar"
+                            android:textColor="@color/gunmetal"
+                            android:textSize="11sp" />
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <!-- Barra inferior: Precio total y Botón Agregar al carrito -->
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -252,32 +416,49 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Total price"
+                            android:text="Precio total"
                             android:textColor="#888888"
-                            android:textSize="13sp" />
+                            android:textSize="12sp" />
 
-                        <TextView
-                            android:id="@+id/tvDetailTotalPrice"
+                        <LinearLayout
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:textColor="@color/gunmetal"
-                            android:textSize="22sp"
-                            android:textStyle="bold"
-                            tools:text="$4.70" />
+                            android:gravity="bottom"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="$"
+                                android:textColor="@color/carmine_pink"
+                                android:textSize="18sp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:id="@+id/tvDetailTotalPrice"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="2dp"
+                                android:textColor="@color/gunmetal"
+                                android:textSize="22sp"
+                                android:textStyle="bold"
+                                tools:text="4.70" />
+                        </LinearLayout>
                     </LinearLayout>
 
                     <com.google.android.material.button.MaterialButton
                         android:id="@+id/btnAddToCart"
                         android:layout_width="match_parent"
-                        android:layout_height="54dp"
+                        android:layout_height="52dp"
                         android:layout_marginStart="24dp"
                         android:backgroundTint="@color/gunmetal"
-                        android:text="Add to cart"
+                        android:text="Agregar al carrito"
                         android:textAllCaps="false"
                         android:textColor="@color/white"
-                        android:textSize="16sp"
+                        android:textSize="15sp"
                         android:textStyle="bold"
-                        app:cornerRadius="24dp" />
+                        app:cornerRadius="24dp"
+                        app:elevation="2dp" />
                 </LinearLayout>
 
             </LinearLayout>

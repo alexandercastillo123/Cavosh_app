@@ -1,0 +1,401 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/sh_header_police_blue"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <!-- Top Header con botón atrás y título Método de Entrega -->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="16dp"
+            android:paddingVertical="14dp">
+
+            <ImageButton
+                android:id="@+id/btnDeliveryBack"
+                android:layout_width="44dp"
+                android:layout_height="44dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:contentDescription="@string/content_description"
+                android:padding="8dp"
+                android:src="@drawable/ic_arrow_back"
+                app:tint="@color/white"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tvDeliveryTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Método de Entrega"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <!-- Contenedor blanco -->
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardBackgroundColor="@color/white"
+            app:cardCornerRadius="28dp"
+            app:cardElevation="8dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingHorizontal="20dp"
+                android:paddingTop="20dp"
+                android:paddingBottom="24dp">
+
+                <!-- Switch Segmento: Recoger en tienda vs Delivery -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:background="@drawable/sh_edittext_city"
+                    android:orientation="horizontal"
+                    android:padding="4dp">
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnModePickup"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:backgroundTint="@color/carmine_pink"
+                        android:insetTop="0dp"
+                        android:insetBottom="0dp"
+                        android:text="Recoger en tienda"
+                        android:textAllCaps="false"
+                        android:textColor="@color/white"
+                        android:textSize="13sp"
+                        android:textStyle="bold"
+                        app:cornerRadius="20dp"
+                        app:elevation="0dp" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnModeDelivery"
+                        style="@style/Widget.MaterialComponents.Button.TextButton"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:insetTop="0dp"
+                        android:insetBottom="0dp"
+                        android:text="Delivery"
+                        android:textAllCaps="false"
+                        android:textColor="@color/gunmetal"
+                        android:textSize="13sp"
+                        app:cornerRadius="20dp" />
+                </LinearLayout>
+
+                <!-- Opción 1: Recogida programada -->
+                <LinearLayout
+                    android:id="@+id/rowScheduledPickup"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Recogida programada"
+                        android:textColor="@color/gunmetal"
+                        android:textSize="15sp"
+                        android:textStyle="bold" />
+
+                    <RadioButton
+                        android:id="@+id/rbScheduledPickup"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:buttonTint="@color/carmine_pink"
+                        android:checked="true" />
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:text="Elegir fecha"
+                    android:textColor="#757575"
+                    android:textSize="13sp" />
+
+                <!-- Tarjeta Calendario Mensual -->
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    app:cardBackgroundColor="#FAFBFD"
+                    app:cardCornerRadius="16dp"
+                    app:cardElevation="1dp"
+                    app:strokeColor="#E2E8F0"
+                    app:strokeWidth="1dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="14dp">
+
+                        <!-- Navegación de Mes -->
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal">
+
+                            <ImageView
+                                android:id="@+id/btnCalPrev"
+                                android:layout_width="32dp"
+                                android:layout_height="32dp"
+                                android:background="?attr/selectableItemBackgroundBorderless"
+                                android:padding="6dp"
+                                android:src="@drawable/ic_arrow_back"
+                                app:tint="@color/gunmetal" />
+
+                            <TextView
+                                android:id="@+id/tvCalMonthYear"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:gravity="center"
+                                android:text="Noviembre 2026"
+                                android:textColor="@color/gunmetal"
+                                android:textSize="14sp"
+                                android:textStyle="bold" />
+
+                            <ImageView
+                                android:id="@+id/btnCalNext"
+                                android:layout_width="32dp"
+                                android:layout_height="32dp"
+                                android:background="?attr/selectableItemBackgroundBorderless"
+                                android:padding="6dp"
+                                android:rotation="180"
+                                android:src="@drawable/ic_arrow_back"
+                                app:tint="@color/gunmetal" />
+                        </LinearLayout>
+
+                        <!-- Días de la semana -->
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:orientation="horizontal">
+
+                            <TextView style="@style/CalHeaderStyle" android:text="LUN" />
+                            <TextView style="@style/CalHeaderStyle" android:text="MAR" />
+                            <TextView style="@style/CalHeaderStyle" android:text="MIÉ" />
+                            <TextView style="@style/CalHeaderStyle" android:text="JUE" />
+                            <TextView style="@style/CalHeaderStyle" android:text="VIE" />
+                            <TextView style="@style/CalHeaderStyle" android:text="SÁB" />
+                            <TextView style="@style/CalHeaderStyle" android:text="DOM" />
+                        </LinearLayout>
+
+                        <!-- Grilla de días (Semana 1) -->
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="34dp"
+                            android:layout_marginTop="6dp"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal">
+
+                            <TextView style="@style/CalDayInactiveStyle" android:text="31" />
+                            <TextView style="@style/CalDayStyle" android:text="1" />
+                            <TextView style="@style/CalDayStyle" android:text="2" />
+                            <TextView style="@style/CalDayStyle" android:text="3" />
+                            <!-- Día seleccionado 4 -->
+                            <TextView
+                                android:id="@+id/tvCalDay4"
+                                style="@style/CalDaySelectedStyle"
+                                android:text="4" />
+                            <TextView style="@style/CalDayStyle" android:text="5" />
+                            <TextView style="@style/CalDayStyle" android:text="6" />
+                        </LinearLayout>
+
+                        <!-- Grilla de días (Semana 2) -->
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="34dp"
+                            android:layout_marginTop="4dp"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal">
+
+                            <TextView style="@style/CalDayStyle" android:text="7" />
+                            <TextView style="@style/CalDayStyle" android:text="8" />
+                            <TextView style="@style/CalDayStyle" android:text="9" />
+                            <TextView style="@style/CalDayStyle" android:text="10" />
+                            <TextView style="@style/CalDayStyle" android:text="11" />
+                            <TextView style="@style/CalDayStyle" android:text="12" />
+                            <TextView style="@style/CalDayStyle" android:text="13" />
+                        </LinearLayout>
+
+                        <!-- Grilla de días (Semana 3) -->
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="34dp"
+                            android:layout_marginTop="4dp"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal">
+
+                            <TextView style="@style/CalDayStyle" android:text="14" />
+                            <TextView style="@style/CalDayStyle" android:text="15" />
+                            <TextView style="@style/CalDayStyle" android:text="16" />
+                            <TextView style="@style/CalDayStyle" android:text="17" />
+                            <TextView style="@style/CalDayStyle" android:text="18" />
+                            <TextView style="@style/CalDayStyle" android:text="19" />
+                            <TextView style="@style/CalDayStyle" android:text="20" />
+                        </LinearLayout>
+
+                        <!-- Grilla de días (Semana 4) -->
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="34dp"
+                            android:layout_marginTop="4dp"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal">
+
+                            <TextView style="@style/CalDayStyle" android:text="21" />
+                            <TextView style="@style/CalDayStyle" android:text="22" />
+                            <TextView style="@style/CalDayStyle" android:text="23" />
+                            <TextView style="@style/CalDayStyle" android:text="24" />
+                            <TextView style="@style/CalDayStyle" android:text="25" />
+                            <TextView style="@style/CalDayStyle" android:text="26" />
+                            <TextView style="@style/CalDayStyle" android:text="27" />
+                        </LinearLayout>
+
+                        <!-- Grilla de días (Semana 5) -->
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="34dp"
+                            android:layout_marginTop="4dp"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal">
+
+                            <TextView style="@style/CalDayStyle" android:text="28" />
+                            <TextView style="@style/CalDayStyle" android:text="29" />
+                            <TextView style="@style/CalDayStyle" android:text="30" />
+                            <TextView style="@style/CalDayInactiveStyle" android:text="1" />
+                            <TextView style="@style/CalDayInactiveStyle" android:text="2" />
+                            <TextView style="@style/CalDayInactiveStyle" android:text="3" />
+                            <TextView style="@style/CalDayInactiveStyle" android:text="4" />
+                        </LinearLayout>
+
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <!-- Elegir hora -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Elegir hora"
+                        android:textColor="@color/gunmetal"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
+
+                    <!-- Selector de Hora con desplegable -->
+                    <LinearLayout
+                        android:id="@+id/btnSelectTime"
+                        android:layout_width="wrap_content"
+                        android:layout_height="38dp"
+                        android:background="@drawable/sh_edittext_city"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
+                        android:paddingHorizontal="14dp">
+
+                        <TextView
+                            android:id="@+id/tvChosenTime"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="08:00 AM"
+                            android:textColor="@color/gunmetal"
+                            android:textSize="13sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="8dp"
+                            android:text="↕"
+                            android:textColor="#888888"
+                            android:textSize="14sp" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <!-- Opción 2: Recoger ahora -->
+                <LinearLayout
+                    android:id="@+id/rowPickupNow"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="18dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Recoger ahora"
+                        android:textColor="@color/gunmetal"
+                        android:textSize="15sp"
+                        android:textStyle="bold" />
+
+                    <RadioButton
+                        android:id="@+id/rbPickupNow"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:buttonTint="@color/carmine_pink" />
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="2dp"
+                    android:text="Tu pedido estará listo en 5–7 minutos."
+                    android:textColor="#757575"
+                    android:textSize="12sp" />
+
+                <!-- Botón Siguiente -->
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnDeliveryNext"
+                    android:layout_width="match_parent"
+                    android:layout_height="52dp"
+                    android:layout_marginTop="24dp"
+                    android:backgroundTint="@color/gunmetal"
+                    android:text="Siguiente"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white"
+                    android:textSize="15sp"
+                    android:textStyle="bold"
+                    app:cornerRadius="24dp"
+                    app:elevation="2dp" />
+
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+    </LinearLayout>
+</androidx.core.widget.NestedScrollView>

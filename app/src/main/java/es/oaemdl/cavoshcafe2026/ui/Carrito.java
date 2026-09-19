@@ -162,15 +162,11 @@ public class Carrito extends Fragment {
             return;
         }
 
-        CheckoutBottomSheet sheet = CheckoutBottomSheet.newInstance(currentTotal, appliedCoupon, pedido -> {
-            cargarCarrito();
-            OrderSuccessBottomSheet successSheet = OrderSuccessBottomSheet.newInstance(pedido, () -> {
-                NavController nc = Navigation.findNavController(requireView());
-                nc.navigate(R.id.navigation_inicio);
-            });
-            successSheet.show(getChildFragmentManager(), "order_success");
+        MetodoEntregaBottomSheet deliverySheet = MetodoEntregaBottomSheet.newInstance();
+        deliverySheet.setOnDeliveryMethodSelectedListener((isDelivery, isScheduled, date, time) -> {
+            // Callback opcional cuando se elija método de entrega
         });
-        sheet.show(getChildFragmentManager(), "checkout");
+        deliverySheet.show(getChildFragmentManager(), "MetodoEntregaBottomSheet");
     }
 
     @Override

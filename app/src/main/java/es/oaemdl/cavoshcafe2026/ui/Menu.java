@@ -9,6 +9,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import es.oaemdl.cavoshcafe2026.controller.ProductoController;
 import es.oaemdl.cavoshcafe2026.data.api.ApiClient;
 import es.oaemdl.cavoshcafe2026.data.model.ApiResponse;
 import es.oaemdl.cavoshcafe2026.data.model.Producto;
@@ -27,6 +28,9 @@ public class Menu extends Fragment {
     private SessionManager session;
     private ProductoAdapter productoAdapter;
     private String categoriaActual = "Todos";
+
+    // ProductoController: usa SQLite como caché, llama API solo si SQLite está vacío
+    private final ProductoController controller = new ProductoController();
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -75,15 +79,15 @@ public class Menu extends Fragment {
     }
 
     private void cargarProductosPorCategoria(String categoria) {
-        ApiClient.getService().listarProductos(categoria).enqueue(new Callback<ApiResponse<List<Producto>>>() {
+        // Lee SQLite primero con WHERE Categoria = '...'
+        // Si SQLite está vacío, llama a la API y guarda en SQLite
+        controller.obtenerTodos(requireContext(), categoria, new ProductoController.ProductosCallback() {
             @Override
-            public void onResponse(@NonNull Call<ApiResponse<List<Producto>>> call, @NonNull Response<ApiResponse<List<Producto>>> response) {
-                if (isAdded() && response.isSuccessful() && response.body() != null) {
-                    List<Producto> productos = response.body().getData();
-                    productoAdapter.submitList(productos);
-                }
+            public void onProductos(List<Producto> productos) {
+                if (isAdded()) productoAdapter.submitList(productos);
             }
-            @Override public void onFailure(@NonNull Call<ApiResponse<List<Producto>>> call, @NonNull Throwable t) {}
+            @Override
+            public void onError(String mensaje) { }
         });
     }
 

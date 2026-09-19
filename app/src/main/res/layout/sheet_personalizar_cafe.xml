@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/sh_image_container"
+    android:paddingBottom="24dp">
+
+    <!-- Fondo de marca de agua con granos de café a la derecha -->
+    <ImageView
+        android:layout_width="220dp"
+        android:layout_height="220dp"
+        android:layout_marginTop="60dp"
+        android:layout_marginEnd="-40dp"
+        android:alpha="0.12"
+        android:scaleType="fitCenter"
+        android:src="@drawable/ic_granos_cafe"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!-- Barra de arrastre superior naranja -->
+    <View
+        android:id="@+id/dragHandle"
+        android:layout_width="60dp"
+        android:layout_height="5dp"
+        android:layout_marginTop="12dp"
+        android:background="@drawable/sh_drag_handle_orange"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        app:layout_constrainedHeight="true"
+        app:layout_constraintBottom_toTopOf="@id/btnSaveCustomization"
+        app:layout_constraintTop_toBottomOf="@id/dragHandle">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingHorizontal="24dp"
+            android:paddingBottom="16dp">
+
+            <!-- SECCIÓN LECHE -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Leche"
+                android:textColor="@color/gunmetal"
+                android:textSize="17sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:text="Elige 1"
+                android:textColor="#888888"
+                android:textSize="12sp" />
+
+            <RadioGroup
+                android:id="@+id/rgMilkChoice"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp">
+
+                <RadioButton
+                    android:id="@+id/rbMilkFullFat"
+                    android:layout_width="match_parent"
+                    android:layout_height="38dp"
+                    android:buttonTint="@color/carmine_pink"
+                    android:text="Leche entera"
+                    android:textColor="@color/gunmetal"
+                    android:textSize="14sp" />
+
+                <RadioButton
+                    android:id="@+id/rbMilkLactoseFree"
+                    android:layout_width="match_parent"
+                    android:layout_height="38dp"
+                    android:buttonTint="@color/carmine_pink"
+                    android:text="Leche sin lactosa"
+                    android:textColor="@color/gunmetal"
+                    android:textSize="14sp" />
+
+                <RadioButton
+                    android:id="@+id/rbMilkSoy"
+                    android:layout_width="match_parent"
+                    android:layout_height="38dp"
+                    android:buttonTint="@color/carmine_pink"
+                    android:text="Leche de soya"
+                    android:textColor="@color/gunmetal"
+                    android:textSize="14sp" />
+
+                <RadioButton
+                    android:id="@+id/rbMilkSkim"
+                    android:layout_width="match_parent"
+                    android:layout_height="38dp"
+                    android:buttonTint="@color/carmine_pink"
+                    android:text="Leche descremada"
+                    android:textColor="@color/gunmetal"
+                    android:textSize="14sp" />
+
+                <RadioButton
+                    android:id="@+id/rbMilkAlmond"
+                    android:layout_width="match_parent"
+                    android:layout_height="38dp"
+                    android:buttonTint="@color/carmine_pink"
+                    android:text="Leche de almendras (+ $0.7)"
+                    android:textColor="@color/gunmetal"
+                    android:textSize="14sp" />
+
+                <RadioButton
+                    android:id="@+id/rbMilkOat"
+                    android:layout_width="match_parent"
+                    android:layout_height="38dp"
+                    android:checked="true"
+                    android:buttonTint="@color/carmine_pink"
+                    android:text="Leche de avena (+ $0.7)"
+                    android:textColor="@color/gunmetal"
+                    android:textSize="14sp" />
+            </RadioGroup>
+
+            <!-- SECCIÓN CREMA BATIDA -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="18dp"
+                android:text="Crema batida"
+                android:textColor="@color/gunmetal"
+                android:textSize="17sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:text="Elige 1"
+                android:textColor="#888888"
+                android:textSize="12sp" />
+
+            <RadioGroup
+                android:id="@+id/rgCreamChoice"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp">
+
+                <RadioButton
+                    android:id="@+id/rbCreamWithout"
+                    android:layout_width="match_parent"
+                    android:layout_height="38dp"
+                    android:checked="true"
+                    android:buttonTint="@color/carmine_pink"
+                    android:text="Sin crema batida"
+                    android:textColor="@color/gunmetal"
+                    android:textSize="14sp" />
+
+                <RadioButton
+                    android:id="@+id/rbCreamWith"
+                    android:layout_width="match_parent"
+                    android:layout_height="38dp"
+                    android:buttonTint="@color/carmine_pink"
+                    android:text="Con crema batida (+ $0.5)"
+                    android:textColor="@color/gunmetal"
+                    android:textSize="14sp" />
+            </RadioGroup>
+
+            <!-- SECCIÓN CAFEÍNA -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="18dp"
+                android:text="Cafeína"
+                android:textColor="@color/gunmetal"
+                android:textSize="17sp"
+                android:textStyle="bold" />
+
+            <CheckBox
+                android:id="@+id/cbWithoutCaffeine"
+                android:layout_width="match_parent"
+                android:layout_height="42dp"
+                android:layout_marginTop="4dp"
+                android:buttonTint="@color/carmine_pink"
+                android:text="¿Sin cafeína?"
+                android:textColor="@color/gunmetal"
+                android:textSize="14sp" />
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+    <!-- Botón Guardar -->
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnSaveCustomization"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginHorizontal="24dp"
+        android:layout_marginTop="16dp"
+        android:backgroundTint="@color/gunmetal"
+        android:text="Guardar"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        app:cornerRadius="22dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

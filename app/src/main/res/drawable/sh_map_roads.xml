@@ -1,0 +1,29 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="300dp"
+    android:height="200dp"
+    android:viewportWidth="300"
+    android:viewportHeight="200">
+    <!-- Fondo del mapa -->
+    <path
+        android:fillColor="#F0F4F8"
+        android:pathData="M0,0h300v200H0z" />
+    <!-- Manzanas / bloques -->
+    <path
+        android:fillColor="#E1E7EE"
+        android:pathData="M10,10h80v45H10z M110,10h180v35H110z M10,75h60v50H10z M90,75h90v40H90z M200,65h90v60H200z M15,145h90v45H15z M125,135h165v55H125z" />
+    <!-- Calles / caminos -->
+    <path
+        android:strokeColor="#FFFFFF"
+        android:strokeWidth="12"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="round"
+        android:fillColor="#00000000"
+        android:pathData="M0,65 Q100,65 140,85 T300,55 M100,0 L100,200 M190,0 Q210,100 190,200 M0,135 L300,125" />
+    <path
+        android:strokeColor="#D3DFEC"
+        android:strokeWidth="1.5"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="round"
+        android:fillColor="#00000000"
+        android:pathData="M0,65 Q100,65 140,85 T300,55 M100,0 L100,200 M190,0 Q210,100 190,200 M0,135 L300,125" />
+</vector>

@@ -51,7 +51,7 @@ public class Favoritos extends Fragment {
                     List<Producto> favs = response.body().getData();
                     adapter.submitList(favs);
                     int count = favs != null ? favs.size() : 0;
-                    binding.tvNuevo.setText(count + " items");
+                    binding.tvItemCount.setText(count + " artículos");
                 }
             }
 
